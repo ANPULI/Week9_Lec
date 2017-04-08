@@ -41,7 +41,7 @@ class Sample(object):
         f = []
         for e in self.getFeatures():
             f.append(e/float(n))
-        return Sample(self.name, f)
+        return Sample(self.name + '/' + str(n), f)
 
     #### Implement an overwrite of the '-' operator here!
     def __sub__(self, other):
