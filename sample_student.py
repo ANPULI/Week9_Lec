@@ -7,11 +7,12 @@ Created on Thu Oct 29 16:36:11 2015
 import util
 import helper
 
+
 # Sample class
 class Sample(object):
     
-    def __init__(self, name, features, label = None):
-        #Assumes features is an array of numbers
+    def __init__(self, name, features, label=None):
+        # Assumes features is an array of numbers
         self.name = name
         self.features = features
         self.label = label
@@ -47,7 +48,10 @@ class Sample(object):
     def __sub__(self, other):
         ''' replace the line below with you code
             refer to the __add__ for ideas '''
-        return helper.__sub__(self, other)
+        f = []
+        for i in range(self.dimensionality()):
+            f.append(self.getFeatures()[i] - other.getFeatures()[i])
+        return Sample(self.name + '-' + other.name, f)
     
     def __mul__(self, other):
         ''' bonus: can you do vector multiplication?
@@ -55,7 +59,7 @@ class Sample(object):
         pass
         
     def __str__(self):
-        return self.name +':'+ str(self.features) + ':' + str(self.label)
+        return self.name + ':' + str(self.features) + ':' + str(self.label)
 
 if __name__ == "__main__":
     a = Sample('a', [1, 1])

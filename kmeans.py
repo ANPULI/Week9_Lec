@@ -10,6 +10,7 @@ import util
 import cluster_student as cluster
 import helper
 
+
 def kmeans_iter(samples, clusters, k):
     '''
         implement one iteration of kmeans:
@@ -21,22 +22,23 @@ def kmeans_iter(samples, clusters, k):
     '''
     converged = True
     return converged
-    
+
+
 # Kmeans: take a list of samples and make k clusters
 def kmeans(samples, k, verbose):
     """Assumes samples is a list of samples of class Sample,
          k is a positive int, verbose is a Boolean
        Returns a list containing k clusters. """
        
-    #Get k randomly chosen initial centroids
+    # Get k randomly chosen initial centroids
     initialCentroids = random.sample(samples, k)
     
-    #Create a singleton cluster for each centroid
+    # Create a singleton cluster for each centroid
     clusters = []
     for e in initialCentroids:
         clusters.append(cluster.Cluster([e]))
         
-    #Iterate until centroids do not change
+    # Iterate until centroids do not change
     converged = False
     numIterations = 0
     while not converged:
@@ -46,13 +48,13 @@ def kmeans(samples, k, verbose):
         # replace the following line by implementing
         # kmeans_iter(samples, clusters, k) in this file
         converged = helper.kmeans_iter(samples, clusters, k)
-        #converged = kmeans_iter(samples, clusters, k)
+        # converged = kmeans_iter(samples, clusters, k)
 
         if verbose:
             print('Iteration #' + str(numIterations))
             for c in clusters:
                 print(c)
-            print('\n') #add blank line
+            print('\n') # add blank line
     return clusters
     
 # one run of kmeans, like:
