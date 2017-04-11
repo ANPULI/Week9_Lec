@@ -3,6 +3,7 @@ import sample_student as sample
 import util
 import helper
 
+
 # Cluster class
 class Cluster(object):
     
@@ -27,13 +28,22 @@ class Cluster(object):
         return an instance of Sample, its features should be
         the center of all the samples in the cluster
         '''
-        return helper.computeCentroid(self)
+        # return helper.computeCentroid(self)
+        s = sample.Sample("center", [0, 0])
+        for spl in self.samples:
+            s += spl
+        s /= len(self.samples)
+        return s
+
 
     #### Implement the centroid updating function here!
     def update(self, samples):
         """Replace the samples in the cluster by new samples
            Return: how much the centroid has changed"""
-        return helper.update(self, samples)
+        # return helper.update(self, samples)
+        c1 = self.centroid
+        c2 = Cluster(samples).centroid
+        return c1.distance(c2)
      
     def __str__(self):
         names = []

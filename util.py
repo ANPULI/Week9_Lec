@@ -9,6 +9,7 @@ import pylab, random
 import matplotlib.pyplot as plt
 import sample_student as sample
 
+
 def minkowskiDist(v1, v2, p):
     """Assumes v1 and v2 are equal-length arrays of numbers
        Returns Minkowski distance of order p between v1 and v2"""
@@ -16,6 +17,7 @@ def minkowskiDist(v1, v2, p):
     for i in range(len(v1)):
         dist += abs(v1[i] - v2[i])**p
     return dist**(1.0/p)
+
 
 # generating samples from Gaussian distribution
 def genDistribution(xMean=0, xSD=1, yMean=0, ySD=1, n=50, namePrefix=''):
@@ -26,8 +28,9 @@ def genDistribution(xMean=0, xSD=1, yMean=0, ySD=1, n=50, namePrefix=''):
         samples.append(sample.Sample(namePrefix+str(s), [x, y]))
     return samples
 
+
 # plot routines
-def plotSamples(samples, marker='o', verbose = False):
+def plotSamples(samples, marker='o', verbose=False):
     xVals, yVals = [], []
     for s in samples:
         x = s.getFeatures()[0]
@@ -40,12 +43,14 @@ def plotSamples(samples, marker='o', verbose = False):
         yVals.append(y)
     plt.plot(xVals, yVals, marker)
 
+
 # MATLAB formatting strings
 def make_cmarkers():
     markers = ('o', 'v', '^', '<', '>', '8', 
                    's', 'p', '*', 'h', 'H', 'D', 'd')
     colors = ('b', 'g', 'r', 'c', 'm', 'y', 'k')
     return [c + m for m in markers for c in colors]
+
 
 def plot_cluster(clusters, verbose = False):
     color_markers = iter(make_cmarkers())
