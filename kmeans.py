@@ -54,9 +54,10 @@ def kmeans(samples, k, verbose):
             print('Iteration #' + str(numIterations))
             for c in clusters:
                 print(c)
-            print('\n') # add blank line
+            print('\n')  # add blank line
     return clusters
-    
+
+
 # one run of kmeans, like:
 # kmeansTest(4, False)
 def kmeansTest(k=2, n=20, verbose=False):
